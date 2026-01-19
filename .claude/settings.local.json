@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"C:\\laragon\\www\\koperasi-syariah\\views\\auth\\login_temp.php\")",
+      "Bash(echo:*)",
+      "Bash(\"C:\\laragon\\www\\koperasi-syariah\\views\\auth\\login.php\")",
+      "Bash(php:*)",
+      "Bash(dir:*)",
+      "Bash(del:*)",
+      "Bash(findstr:*)",
+      "Bash(nul:*)",
+      "Bash(composer require:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
