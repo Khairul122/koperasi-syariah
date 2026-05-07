@@ -48,7 +48,7 @@ $isActive = $oldInput['is_active'] ?? ($bank['is_active'] ?? 1);
   <div class="container-scroller">
     <?php include(BASE_PATH . 'app/Template/navbar.php'); ?>
     <div class="container-fluid page-body-wrapper">
-      <?php include(BASE_PATH . 'app/Template/setting_panel.php'); ?>
+ ?>
       <?php include(BASE_PATH . 'app/Template/sidebar.php'); ?>
       <div class="main-panel">
         <div class="content-wrapper">

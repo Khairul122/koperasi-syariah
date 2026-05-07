@@ -37,17 +37,46 @@
         min-height: 100vh;
     }
 
+    .page-body-wrapper {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding-top: var(--navbar-height);
+        padding-left: var(--sidebar-width, 260px); /* Use padding on wrapper instead of margin on main-panel */
+    }
+
+    .sidebar {
+        position: fixed !important;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: var(--sidebar-width, 260px) !important;
+        z-index: 1040;
+    }
+
     .main-panel {
         flex: 1;
         display: flex;
         flex-direction: column;
         min-width: 0;
+        margin-left: 0 !important; /* Force remove any double margin */
+        width: 100%;
         transition: all 0.3s ease;
     }
 
     .content-wrapper {
         padding: 1.5rem;
         flex: 1;
+        width: 100%;
+    }
+    
+    @media (max-width: 991.98px) {
+        .page-body-wrapper {
+            padding-left: 0 !important;
+        }
+        .sidebar {
+            transform: translateX(-100%);
+        }
     }
   </style>
   <style>

@@ -3,7 +3,7 @@ class Database {
     private $host = "localhost";
     private $username = "root";
     private $password = "";
-    private $database = "kp-simpan-pinjam";  // NAMA DATABASE YANG BENAR
+    private $database = "db_joki"; 
     public $conn;
 
     public function getConnection() {
@@ -27,6 +27,9 @@ class Database {
 
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+            // Set charset ke utf8mb4 untuk support emoji
+            $this->conn->exec("SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci");
 
             error_log("Database connection successful: " . $this->database);
 

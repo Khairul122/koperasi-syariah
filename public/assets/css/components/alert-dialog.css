@@ -1,0 +1,190 @@
+/* ============================================================
+   SynAlert — Neobrutalist Alert Dialog Component
+   Standalone CSS, no Tailwind or Bootstrap dependency.
+   ============================================================ */
+
+/* ----- Overlay ----- */
+.syna-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: syna-bg-in 0.15s ease both;
+}
+
+.syna-overlay.syna-exit {
+    animation: syna-bg-out 0.15s ease forwards;
+}
+
+.syna-overlay.syna-exit .syna-dialog {
+    animation: syna-dialog-out 0.15s ease forwards;
+}
+
+/* ----- Dialog box ----- */
+.syna-dialog {
+    background: #ffffff;
+    border: 4px solid #000000;
+    padding: 1.5rem;
+    max-width: 440px;
+    width: 100%;
+    box-shadow: 8px 8px 0 0 #000000;
+    animation: syna-dialog-in 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    position: relative;
+}
+
+/* Type border + shadow accents */
+.syna-dialog--success { border-color: #A3E635; box-shadow: 8px 8px 0 0 #A3E635; }
+.syna-dialog--error   { border-color: #FF4081; box-shadow: 8px 8px 0 0 #FF4081; }
+.syna-dialog--warning { border-color: #FFD600; box-shadow: 8px 8px 0 0 #FFD600; }
+.syna-dialog--loading { border-color: #FFD600; box-shadow: 8px 8px 0 0 #FFD600; }
+.syna-dialog--info    { border-color: #000000; box-shadow: 8px 8px 0 0 #000000; }
+
+/* ----- Body row ----- */
+.syna-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+/* ----- Icon badge ----- */
+.syna-icon {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    min-width: 3rem;
+    border: 3px solid #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 4px 4px 0 0 #000000;
+}
+
+.syna-icon svg {
+    width: 1.4rem;
+    height: 1.4rem;
+    display: block;
+}
+
+.syna-icon--success { background: #A3E635; color: #000; }
+.syna-icon--error   { background: #FF4081; color: #fff; }
+.syna-icon--warning { background: #FFD600; color: #000; }
+.syna-icon--loading { background: #FFD600; color: #000; }
+.syna-icon--info    { background: #000000; color: #fff; }
+
+/* ----- Spinner (loading) ----- */
+.syna-spinner {
+    width: 1.4rem;
+    height: 1.4rem;
+    border: 3px solid #000000;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: syna-spin 0.65s linear infinite;
+    flex-shrink: 0;
+}
+
+/* ----- Text block ----- */
+.syna-text {
+    flex: 1;
+    min-width: 0;
+    padding-top: 0.1rem;
+}
+
+.syna-title {
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #000000;
+    margin: 0 0 0.3rem;
+    word-break: break-word;
+}
+
+.syna-message {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #444444;
+    line-height: 1.55;
+    margin: 0;
+    word-break: break-word;
+}
+
+/* HTML message content (errors list etc.) */
+.syna-message ul {
+    margin: 0.5rem 0 0 0;
+    padding-left: 1.2rem;
+    list-style: disc;
+}
+
+.syna-message ul li {
+    margin-bottom: 0.4rem;
+    color: #444;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+/* ----- Footer / button row ----- */
+.syna-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0.9rem;
+    margin-top: 1rem;
+    border-top: 2px solid #000000;
+    gap: 0.5rem;
+}
+
+.syna-btn {
+    padding: 0.45rem 1.4rem;
+    border: 3px solid #000000;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-weight: 900;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    box-shadow: 3px 3px 0 0 #000000;
+    cursor: pointer;
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+    line-height: 1.4;
+    outline: none;
+}
+
+.syna-btn:hover  { transform: translate(1px, 1px); box-shadow: 2px 2px 0 0 #000000; }
+.syna-btn:active { transform: translate(3px, 3px); box-shadow: none; }
+.syna-btn:focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+
+.syna-btn--success { background: #A3E635; color: #000000; }
+.syna-btn--error   { background: #FF4081; color: #ffffff; }
+.syna-btn--warning { background: #FFD600; color: #000000; }
+.syna-btn--info    { background: #000000; color: #ffffff; }
+.syna-btn--outline { background: #ffffff; color: #000000; }
+
+/* ----- Animations ----- */
+@keyframes syna-bg-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes syna-bg-out {
+    to { opacity: 0; }
+}
+
+@keyframes syna-dialog-in {
+    from { opacity: 0; transform: scale(0.91) translateY(10px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes syna-dialog-out {
+    to { opacity: 0; transform: scale(0.93) translateY(6px); }
+}
+
+@keyframes syna-spin {
+    to { transform: rotate(360deg); }
+}

@@ -364,7 +364,7 @@ $isActive = $oldInput['is_active'] ?? ($socialMedia['is_active'] ?? 1);
   <div class="container-scroller">
     <?php include(BASE_PATH . 'app/Template/navbar.php'); ?>
     <div class="container-fluid page-body-wrapper">
-      <?php include(BASE_PATH . 'app/Template/setting_panel.php'); ?>
+ ?>
       <?php include(BASE_PATH . 'app/Template/sidebar.php'); ?>
       <div class="main-panel">
         <div class="content-wrapper">
@@ -379,7 +379,7 @@ $isActive = $oldInput['is_active'] ?? ($socialMedia['is_active'] ?? 1);
                 </h3>
               </div>
 
-              <div class="container">
+              <div class="container-fluid p-0">
                 <!-- Error Messages (Hidden, will be shown with SweetAlert2) -->
                 <?php
                 $errors = $_SESSION['errors'] ?? null;

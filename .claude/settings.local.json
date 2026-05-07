@@ -9,7 +9,19 @@
       "Bash(del:*)",
       "Bash(findstr:*)",
       "Bash(nul:*)",
-      "Bash(composer require:*)"
+      "Bash(composer require:*)",
+      "Bash(find:*)",
+      "Bash(mkdir:*)",
+      "Bash(chmod:*)",
+      "Bash(move:*)",
+      "Bash(ls:*)",
+      "Bash(if:*)",
+      "Bash(then echo \"uploads EXISTS\")",
+      "Bash(else echo \"uploads DOES NOT EXIST\")",
+      "Bash(fi:*)",
+      "Bash(then echo \"uploads/banners EXISTS\")",
+      "Bash(else echo \"uploads/banners DOES NOT EXIST\")",
+      "Bash(awk '{print $NF}')"
     ],
     "deny": [],
     "ask": []
