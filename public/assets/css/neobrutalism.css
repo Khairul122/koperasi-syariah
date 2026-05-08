@@ -537,6 +537,61 @@ body {
 }
 
 /* ── Toggle Switch ─────────────────────────────────────────── */
+.neo-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.neo-switch-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.neo-switch-slider {
+    position: relative;
+    width: 46px;
+    height: 24px;
+    background-color: #e5e5e5;
+    border: 2px solid var(--neo-dark);
+    box-shadow: 2px 2px 0 var(--neo-dark);
+    transition: var(--neo-transition);
+}
+
+.neo-switch-slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--neo-dark);
+    transition: var(--neo-transition);
+}
+
+.neo-switch-input:checked + .neo-switch-slider {
+    background-color: var(--neo-secondary);
+}
+
+.neo-switch-input:checked + .neo-switch-slider:before {
+    transform: translateX(22px);
+    background-color: var(--neo-white);
+}
+
+.neo-switch:hover .neo-switch-slider {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--neo-dark);
+}
+
+.neo-switch:active .neo-switch-slider {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--neo-dark);
+}
+
 .neo-toggle-wrap {
     background: var(--neo-bg);
     border: var(--neo-border-width) solid var(--neo-dark);

@@ -217,54 +217,6 @@ $isActive = $oldInput['is_active'] ?? ($contactPerson['is_active'] ?? 1);
     font-weight: 600;
   }
 
-  /* Toggle Switch */
-  .form-switch-wrapper {
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-    border: 2px solid #86efac;
-    border-radius: 12px;
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    transition: all 0.3s ease;
-  }
-
-  .form-switch-wrapper:hover {
-    border-color: #22c55e;
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15);
-  }
-
-  .form-switch-info h6 {
-    margin: 0 0 0.25rem 0;
-    color: #166534;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .form-switch-info p {
-    margin: 0;
-    color: #15803d;
-    font-size: 0.85rem;
-  }
-
-  .form-check-input {
-    width: 3.5rem;
-    height: 2rem;
-    border-radius: 2rem;
-    background-color: #cbd5e1;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .form-check-input:checked {
-    background-color: #22c55e;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='white'/%3e%3c/svg%3e");
-  }
-
   /* Action Buttons */
   .form-actions {
     display: flex;
@@ -387,7 +339,7 @@ $isActive = $oldInput['is_active'] ?? ($contactPerson['is_active'] ?? 1);
                 ?>
 
                 <!-- Form -->
-                <form method="POST" action="<?php echo $isEdit ? 'index.php?controller=contactPerson&action=update' : 'index.php?controller=contactPerson&action=store'; ?>"
+                <form method="POST" action="<?php echo $isEdit ? '<?= BASE_URL ?>/contact-person/update' : '<?= BASE_URL ?>/contact-person/store'; ?>"
                       id="contactPersonForm">
 
                   <?php if ($isEdit): ?>
@@ -570,8 +522,8 @@ $isActive = $oldInput['is_active'] ?? ($contactPerson['is_active'] ?? 1);
                     </div>
                     <div class="form-section-body">
                       <!-- Active Status Toggle -->
-                      <div class="form-switch-wrapper">
-                        <div class="form-switch-info">
+                      <div class="neo-toggle-wrap">
+                        <div class="neo-toggle-info" style="font-family: inherit;">
                           <h6>
                             <i class="fas fa-toggle-on"></i>
                             Status Aktif
@@ -790,23 +742,12 @@ $isActive = $oldInput['is_active'] ?? ($contactPerson['is_active'] ?? 1);
       });
     });
 
-    // Toggle switch animation
-    const toggleSwitch = document.getElementById('is_active');
-    if (toggleSwitch) {
-      toggleSwitch.addEventListener('change', function() {
-        const wrapper = this.closest('.form-switch-wrapper');
-        if (this.checked) {
-          wrapper.style.background = 'linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%)';
-          wrapper.style.borderColor = '#22c55e';
-        } else {
-          wrapper.style.background = 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)';
-          wrapper.style.borderColor = '#cbd5e1';
-        }
-      });
-    }
-  </script>
+    
+    </script>
 </body>
 
 </html>
+
+
 
 

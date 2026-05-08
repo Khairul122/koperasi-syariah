@@ -46,7 +46,7 @@ unset($_SESSION['success_message'], $_SESSION['error_message'], $_SESSION['error
             <h3><i class="fas fa-address-book me-2"></i>Manajemen Kontak Person</h3>
             <div class="neo-breadcrumb">Panel &rsaquo; Data &rsaquo; Kontak</div>
           </div>
-          <a href="index.php?controller=contactPerson&action=create" class="neo-btn neo-btn-primary">
+          <a href="<?= BASE_URL ?>/contact-person/add" class="neo-btn neo-btn-primary">
             <i class="fas fa-plus"></i> Tambah Kontak
           </a>
         </div>
@@ -107,7 +107,7 @@ unset($_SESSION['success_message'], $_SESSION['error_message'], $_SESSION['error
                                 onclick="confirmToggleStatus(<?= $cp['id'] ?>, '<?= addslashes($cp['platform']) ?>', <?= $cp['is_active'] ?>)">
                           <i class="fas fa-power-off"></i>
                         </button>
-                        <a href="index.php?controller=contactPerson&action=edit&id=<?= $cp['id'] ?>"
+                        <a href="<?= BASE_URL ?>/contact-person/edit?id=<?= $cp['id'] ?>"
                            class="neo-btn neo-btn-sm neo-btn-dark" title="Edit">
                           <i class="fas fa-edit"></i>
                         </a>
@@ -127,7 +127,7 @@ unset($_SESSION['success_message'], $_SESSION['error_message'], $_SESSION['error
               <i class="fas fa-address-book empty-icon"></i>
               <h5>Belum Ada Kontak Person</h5>
               <p>Tambahkan kontak person pertama Anda untuk memulai.</p>
-              <a href="index.php?controller=contactPerson&action=create" class="neo-btn neo-btn-primary">
+              <a href="<?= BASE_URL ?>/contact-person/add" class="neo-btn neo-btn-primary">
                 <i class="fas fa-plus"></i> Tambah Kontak
               </a>
             </div>
@@ -162,7 +162,7 @@ function confirmToggleStatus(id, platform, currentStatus) {
     message     : `Yakin ingin ${statusText} kontak "${platform}"?`,
     type        : 'warning',
     confirmText : `Ya, ${statusText}`,
-    onConfirm   : () => window.location.href = `index.php?controller=contactPerson&action=toggleActive&id=${id}`
+    onConfirm   : () => window.location.href = `<?= BASE_URL ?>/contact-person/toggleActive?id=${id}`
   });
 }
 
@@ -172,7 +172,7 @@ function confirmDelete(id, platform) {
     message     : `Yakin ingin menghapus kontak "${platform}"? Tindakan ini tidak dapat dibatalkan.`,
     type        : 'error',
     confirmText : 'Ya, Hapus',
-    onConfirm   : () => window.location.href = `index.php?controller=contactPerson&action=delete&id=${id}`
+    onConfirm   : () => window.location.href = `<?= BASE_URL ?>/contact-person/delete?id=${id}`
   });
 }
 </script>

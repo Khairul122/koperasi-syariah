@@ -59,11 +59,20 @@ class PortofolioController
     {
         $this->requireAdmin();
 
+        // Get session messages
+        $success_message = $_SESSION['success_message'] ?? null;
+        $error_message   = $_SESSION['error_message'] ?? null;
+        $errors          = $_SESSION['errors'] ?? null;
+        
+        // Clear session messages after reading
+        unset($_SESSION['success_message'], $_SESSION['error_message'], $_SESSION['errors']);
+
         $portfolios = $this->portofolioModel->getAll();
 
         // Debug: log hasil query
         if ($portfolios === false) {
             error_log("Portofolio getAll() returned false");
+            $portfolios = [];
         } else {
             error_log("Portofolio getAll() returned " . count($portfolios) . " records");
         }

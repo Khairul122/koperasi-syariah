@@ -28,7 +28,7 @@ unset($_SESSION['success_message'], $_SESSION['error_message'], $_SESSION['error
             <h3><i class="fas fa-university me-2"></i>Manajemen Bank</h3>
             <div class="neo-breadcrumb">Panel &rsaquo; Data &rsaquo; Bank</div>
           </div>
-          <a href="index.php?controller=bank&action=create" class="neo-btn neo-btn-primary">
+          <a href="<?= BASE_URL ?>/bank/add" class="neo-btn neo-btn-primary">
             <i class="fas fa-plus"></i> Tambah Bank
           </a>
         </div>
@@ -80,7 +80,7 @@ unset($_SESSION['success_message'], $_SESSION['error_message'], $_SESSION['error
                                 onclick="confirmToggleStatus(<?= $bank['id'] ?>, '<?= addslashes($bank['bank_name']) ?>', <?= $bank['is_active'] ?>)">
                           <i class="fas fa-power-off"></i>
                         </button>
-                        <a href="index.php?controller=bank&action=edit&id=<?= $bank['id'] ?>"
+                        <a href="<?= BASE_URL ?>/bank/edit?id=<?= $bank['id'] ?>"
                            class="neo-btn neo-btn-sm neo-btn-dark" title="Edit">
                           <i class="fas fa-edit"></i>
                         </a>
@@ -100,7 +100,7 @@ unset($_SESSION['success_message'], $_SESSION['error_message'], $_SESSION['error
               <i class="fas fa-university empty-icon"></i>
               <h5>Belum Ada Data Bank</h5>
               <p>Tambahkan rekening bank pertama Anda untuk memulai.</p>
-              <a href="index.php?controller=bank&action=create" class="neo-btn neo-btn-primary">
+              <a href="<?= BASE_URL ?>/bank/add" class="neo-btn neo-btn-primary">
                 <i class="fas fa-plus"></i> Tambah Bank
               </a>
             </div>
@@ -136,7 +136,7 @@ function confirmToggleStatus(id, bankName, currentStatus) {
     message     : `Yakin ingin ${statusText} bank "${bankName}"?`,
     type        : 'warning',
     confirmText : `Ya, ${statusText}`,
-    onConfirm   : () => window.location.href = `index.php?controller=bank&action=toggleActive&id=${id}`
+    onConfirm   : () => window.location.href = `<?= BASE_URL ?>/bank/toggleActive?id=${id}`
   });
 }
 
@@ -146,7 +146,7 @@ function confirmDelete(id, bankName) {
     message     : `Yakin ingin menghapus bank "${bankName}"? Tindakan ini tidak dapat dibatalkan.`,
     type        : 'error',
     confirmText : 'Ya, Hapus',
-    onConfirm   : () => window.location.href = `index.php?controller=bank&action=delete&id=${id}`
+    onConfirm   : () => window.location.href = `<?= BASE_URL ?>/bank/delete?id=${id}`
   });
 }
 </script>

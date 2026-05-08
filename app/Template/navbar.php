@@ -15,7 +15,7 @@ $userRole = $_SESSION['user_role'] ?? 'Guest';
                 data-bs-toggle="offcanvas" data-bs-target="#sidebarCanvas" aria-label="Menu">
             <i class="fas fa-bars"></i>
         </button>
-        <a class="neo-brand" href="<?= BASE_URL ?>/dashboard">
+        <a class="neo-brand d-lg-none" href="<?= BASE_URL ?>/dashboard">
             SYNECTRA <span>PANEL</span>
         </a>
     </div>

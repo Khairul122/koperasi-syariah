@@ -52,6 +52,7 @@
         bottom: 0;
         width: var(--sidebar-width, 260px) !important;
         z-index: 1040;
+        padding-top: 0 !important; /* Remove padding so logo sits at the top */
     }
 
     .main-panel {

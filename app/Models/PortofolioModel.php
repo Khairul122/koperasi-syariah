@@ -21,10 +21,10 @@ class PortofolioModel
     {
         try {
             $stmt = $this->db->prepare("
-                SELECT p.id, p.title, p.description, p.category, p.created_at,
+                SELECT p.id, p.title, p.description, p.category, p.is_active, p.created_at,
                        COUNT(pi.id) as image_count,
                        GROUP_CONCAT(pi.image_path ORDER BY pi.sort_order SEPARATOR '|') as images,
-                       (SELECT image_path FROM portfolio_images WHERE portfolio_id = p.id AND is_primary = 1 LIMIT 1) as primary_image
+                       (SELECT image_path FROM portfolio_images WHERE portfolio_id = p.id AND is_primary = 1 LIMIT 1) as image_path
                 FROM portfolios p
                 LEFT JOIN portfolio_images pi ON p.id = pi.portfolio_id
                 GROUP BY p.id
@@ -37,7 +37,6 @@ class PortofolioModel
             // Parse images into array
             foreach ($results as &$portfolio) {
                 $portfolio['images'] = !empty($portfolio['images']) ? explode('|', $portfolio['images']) : [];
-                unset($portfolio['images']); // Remove the concatenated string
             }
 
             return $results;

@@ -90,7 +90,7 @@ unset($_SESSION['success_message'], $_SESSION['error_message'], $_SESSION['error
                     </td>
                     <td>
                       <div class="neo-action-group">
-                        <a href="index.php?controller=portofolio&action=edit&id=<?= $portfolio['id'] ?>"
+                        <a href="<?= BASE_URL ?>/portofolio/edit?id=<?= $portfolio['id'] ?>"
                            class="neo-btn neo-btn-sm neo-btn-dark" title="Edit">
                           <i class="fas fa-edit"></i>
                         </a>
@@ -144,7 +144,7 @@ function confirmDelete(id, title) {
     message     : `Yakin ingin menghapus portofolio "${title}"? Tindakan ini tidak dapat dibatalkan.`,
     type        : 'error',
     confirmText : 'Ya, Hapus',
-    onConfirm   : () => window.location.href = `index.php?controller=portofolio&action=delete&id=${id}`
+    onConfirm   : () => window.location.href = `<?= BASE_URL ?>/portofolio/delete?id=${id}`
   });
 }
 </script>

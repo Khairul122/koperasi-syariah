@@ -752,7 +752,7 @@
                       <h5>Aksi Cepat</h5>
                     </div>
                     <div class="card-body p-0">
-                      <a href="index.php?controller=profile&action=index" class="quick-action-item">
+                      <a href="<?= BASE_URL ?>/profile" class="quick-action-item">
                         <div class="action-icon action-purple">
                           <i class="fas fa-user-edit"></i>
                         </div>
@@ -761,7 +761,7 @@
                           <p>Update informasi pribadi</p>
                         </div>
                       </a>
-                      <a href="index.php?controller=settings&action=index" class="quick-action-item">
+                      <a href="<?= BASE_URL ?>/settings" class="quick-action-item">
                         <div class="action-icon action-blue">
                           <i class="fas fa-cog"></i>
                         </div>

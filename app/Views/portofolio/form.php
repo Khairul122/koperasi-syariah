@@ -6,13 +6,13 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Check if user is logged in
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header('Location: <?= BASE_URL ?>/login');
+    header('Location: ' . BASE_URL . '/login');
     exit();
 }
 
 // Check if user is admin
 if ($_SESSION['user_role'] !== 'admin') {
-    header('Location: <?= BASE_URL ?>/dashboard/client');
+    header('Location: ' . BASE_URL . '/dashboard/client');
     exit();
 }
 
@@ -528,7 +528,7 @@ $existingImages = $portfolio['images'] ?? [];
 
                 <!-- Form -->
                 <form method="POST"
-                      action="<?php echo $isEdit ? 'index.php?controller=portofolio&action=update' : '<?= BASE_URL ?>/portofolio/store'; ?>"
+                      action="<?php echo $isEdit ? BASE_URL . '/portofolio/update' : BASE_URL . '/portofolio/store'; ?>"
                       id="portofolioForm"
                       enctype="multipart/form-data">
 
@@ -657,18 +657,18 @@ $existingImages = $portfolio['images'] ?? [];
                                   <i class="fas fa-star me-1"></i>Utama
                                 </span>
                               <?php endif; ?>
-                              <img src="<?php echo htmlspecialchars($img['image_path']); ?>"
+                              <img src="<?= BASE_URL ?>/<?php echo htmlspecialchars($img['image_path']); ?>"
                                    alt="Portfolio Image">
 
                               <div class="gallery-item-overlay">
                                 <?php if (!$img['is_primary']): ?>
-                                  <a href="index.php?controller=portofolio&action=setPrimary&image_id=<?php echo $img['id']; ?>&portfolio_id=<?php echo $portfolio['id']; ?>"
+                                  <a href="<?= BASE_URL ?>/portofolio/setPrimary?image_id=<?php echo $img['id']; ?>&portfolio_id=<?php echo $portfolio['id']; ?>"
                                      class="gallery-btn gallery-btn-primary"
                                      title="Set sebagai Gambar Utama">
                                     <i class="fas fa-star"></i> Jadikan Utama
                                   </a>
                                 <?php endif; ?>
-                                <a href="index.php?controller=portofolio&action=deleteImage&image_id=<?php echo $img['id']; ?>&portfolio_id=<?php echo $portfolio['id']; ?>"
+                                <a href="<?= BASE_URL ?>/portofolio/deleteImage?image_id=<?php echo $img['id']; ?>&portfolio_id=<?php echo $portfolio['id']; ?>"
                                    class="gallery-btn gallery-btn-delete"
                                    title="Hapus Gambar"
                                    onclick="return confirmDeleteImage()">
@@ -918,6 +918,18 @@ $existingImages = $portfolio['images'] ?? [];
           firstError.closest('.form-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
           setTimeout(() => firstError.focus(), 500);
         }
+      } else {
+        // If validation passes, transfer selectedFiles to the file input using FormData
+        const imageInput = document.getElementById('images');
+        if (selectedFiles && selectedFiles.length > 0) {
+          const dataTransfer = new DataTransfer();
+          for (let i = 0; i < selectedFiles.length; i++) {
+            dataTransfer.items.add(selectedFiles[i]);
+          }
+          imageInput.files = dataTransfer.files;
+        }
+        // Allow form to submit naturally by not preventing default
+        return true;
       }
     });
 

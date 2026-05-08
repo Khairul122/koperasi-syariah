@@ -54,20 +54,47 @@ $router->get('/dashboard/unauthorized', 'DashboardController@unauthorized');
 $router->get('/portofolio', 'PortofolioController@index');
 $router->get('/portofolio/add', 'PortofolioController@create');
 $router->post('/portofolio/store', 'PortofolioController@store');
+$router->get('/portofolio/edit', 'PortofolioController@edit');
+$router->post('/portofolio/update', 'PortofolioController@update');
+$router->get('/portofolio/delete', 'PortofolioController@delete');
+$router->get('/portofolio/deleteImage', 'PortofolioController@deleteImage');
+$router->get('/portofolio/setPrimary', 'PortofolioController@setPrimary');
 
 // Banner Routes
 $router->get('/banner', 'BannerController@index');
 $router->get('/banner/add', 'BannerController@create');
 $router->post('/banner/store', 'BannerController@store');
+$router->get('/banner/edit', 'BannerController@edit');
+$router->post('/banner/update', 'BannerController@update');
+$router->get('/banner/delete', 'BannerController@delete');
+$router->get('/banner/toggleActive', 'BannerController@toggleActive');
 
 // Bank Routes
 $router->get('/bank', 'BankController@index');
+$router->get('/bank/add', 'BankController@create');
+$router->post('/bank/store', 'BankController@store');
+$router->get('/bank/edit', 'BankController@edit');
+$router->post('/bank/update', 'BankController@update');
+$router->get('/bank/delete', 'BankController@delete');
+$router->get('/bank/toggleActive', 'BankController@toggleActive');
 
 // Social Media Routes
 $router->get('/social-media', 'SocialMediaController@index');
+$router->get('/social-media/add', 'SocialMediaController@create');
+$router->post('/social-media/store', 'SocialMediaController@store');
+$router->get('/social-media/edit', 'SocialMediaController@edit');
+$router->post('/social-media/update', 'SocialMediaController@update');
+$router->get('/social-media/delete', 'SocialMediaController@delete');
+$router->get('/social-media/toggleActive', 'SocialMediaController@toggleActive');
 
 // Contact Person Routes
 $router->get('/contact-person', 'ContactPersonController@index');
+$router->get('/contact-person/add', 'ContactPersonController@create');
+$router->post('/contact-person/store', 'ContactPersonController@store');
+$router->get('/contact-person/edit', 'ContactPersonController@edit');
+$router->post('/contact-person/update', 'ContactPersonController@update');
+$router->get('/contact-person/delete', 'ContactPersonController@delete');
+$router->get('/contact-person/toggleActive', 'ContactPersonController@toggleActive');
 
 // Dispatch the request
 $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD'], $db);

@@ -74,7 +74,7 @@ $isActive = $oldInput['is_active'] ?? ($bank['is_active'] ?? 1);
                 ?>
 
                 <!-- Form -->
-                <form method="POST" action="<?php echo $isEdit ? 'index.php?controller=bank&action=update' : 'index.php?controller=bank&action=store'; ?>"
+                <form method="POST" action="<?php echo $isEdit ? '<?= BASE_URL ?>/bank/update' : '<?= BASE_URL ?>/bank/store'; ?>"
                       enctype="multipart/form-data" id="bankForm">
 
                   <?php if ($isEdit): ?>

@@ -28,6 +28,16 @@ function ui_checkbox($id, $checked = false, $attrs = '', $label = '') {
     return $labelHtml;
 }
 
+function ui_switch($id, $checked = false, $attrs = '') {
+    $idEsc = htmlspecialchars($id);
+    $checkedAttr = $checked ? ' checked' : '';
+    return '
+    <label class="neo-switch">
+        <input type="checkbox" id="' . $idEsc . '" name="' . $idEsc . '" class="neo-switch-input" value="1"' . $checkedAttr . ' ' . $attrs . '>
+        <span class="neo-switch-slider"></span>
+    </label>';
+}
+
 function ui_select($id, $options = [], $selected = '', $attrs = '') {
     $idEsc = htmlspecialchars($id);
     $html = '<select id="' . $idEsc . '" name="' . $idEsc . '" class="form-control ui-select" ' . $attrs . '>';

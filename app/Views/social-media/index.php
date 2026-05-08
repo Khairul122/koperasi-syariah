@@ -49,7 +49,7 @@ unset($_SESSION['success_message'], $_SESSION['error_message'], $_SESSION['error
             <h3><i class="fas fa-share-alt me-2"></i>Manajemen Social Media</h3>
             <div class="neo-breadcrumb">Panel &rsaquo; Data &rsaquo; Social Media</div>
           </div>
-          <a href="index.php?controller=socialMedia&action=create" class="neo-btn neo-btn-primary">
+          <a href="<?= BASE_URL ?>/social-media/add" class="neo-btn neo-btn-primary">
             <i class="fas fa-plus"></i> Tambah Social Media
           </a>
         </div>
@@ -107,7 +107,7 @@ unset($_SESSION['success_message'], $_SESSION['error_message'], $_SESSION['error
                                 onclick="confirmToggleStatus(<?= $sm['id'] ?>, '<?= addslashes($sm['platform_name']) ?>', <?= $sm['is_active'] ?>)">
                           <i class="fas fa-power-off"></i>
                         </button>
-                        <a href="index.php?controller=socialMedia&action=edit&id=<?= $sm['id'] ?>"
+                        <a href="<?= BASE_URL ?>/social-media/edit?id=<?= $sm['id'] ?>"
                            class="neo-btn neo-btn-sm neo-btn-dark" title="Edit">
                           <i class="fas fa-edit"></i>
                         </a>
@@ -127,7 +127,7 @@ unset($_SESSION['success_message'], $_SESSION['error_message'], $_SESSION['error
               <i class="fas fa-share-alt empty-icon"></i>
               <h5>Belum Ada Social Media</h5>
               <p>Tambahkan akun social media pertama Anda untuk memulai.</p>
-              <a href="index.php?controller=socialMedia&action=create" class="neo-btn neo-btn-primary">
+              <a href="<?= BASE_URL ?>/social-media/add" class="neo-btn neo-btn-primary">
                 <i class="fas fa-plus"></i> Tambah Social Media
               </a>
             </div>
@@ -162,7 +162,7 @@ function confirmToggleStatus(id, platform, currentStatus) {
     message     : `Yakin ingin ${statusText} "${platform}"?`,
     type        : 'warning',
     confirmText : `Ya, ${statusText}`,
-    onConfirm   : () => window.location.href = `index.php?controller=socialMedia&action=toggleActive&id=${id}`
+    onConfirm   : () => window.location.href = `<?= BASE_URL ?>/social-media/toggleActive?id=${id}`
   });
 }
 
@@ -172,7 +172,7 @@ function confirmDelete(id, platform) {
     message     : `Yakin ingin menghapus "${platform}"? Tindakan ini tidak dapat dibatalkan.`,
     type        : 'error',
     confirmText : 'Ya, Hapus',
-    onConfirm   : () => window.location.href = `index.php?controller=socialMedia&action=delete&id=${id}`
+    onConfirm   : () => window.location.href = `<?= BASE_URL ?>/social-media/delete?id=${id}`
   });
 }
 </script>

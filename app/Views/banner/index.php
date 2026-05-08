@@ -93,7 +93,7 @@ unset($_SESSION['success_message'], $_SESSION['error_message'], $_SESSION['error
                       <?php if ($banner['link_url']): ?>
                         <code><?= htmlspecialchars($banner['link_url']) ?></code>
                       <?php else: ?>
-                        <span class="text-muted">â€”</span>
+                        <span class="text-muted">GÇö</span>
                       <?php endif; ?>
                     </td>
                     <td>
@@ -138,13 +138,13 @@ unset($_SESSION['success_message'], $_SESSION['error_message'], $_SESSION['error
 
         <!-- Image Preview Modal -->
         <div id="imgPreviewOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:99998;align-items:center;justify-content:center;padding:1rem;">
-          <div style="background:#fff;border:4px solid #000;box-shadow:8px 8px 0 #000;max-width:800px;width:100%;position:relative;">
-            <div style="background:#FFD600;border-bottom:3px solid #000;padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;">
+          <div style="background:#fff;border:4px solid #000;box-shadow:8px 8px 0 #000;max-width:800px;width:100%;max-height:90vh;display:flex;flex-direction:column;position:relative;">
+            <div style="background:#FFD600;border-bottom:3px solid #000;padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;">
               <strong id="imgPreviewTitle" style="font-weight:900;text-transform:uppercase;font-style:italic;"></strong>
-              <button onclick="closeImagePreview()" style="background:#000;color:#fff;border:none;width:32px;height:32px;font-weight:900;font-size:1rem;cursor:pointer;">âœ•</button>
+              <button onclick="closeImagePreview()" style="background:#000;color:#fff;border:none;width:32px;height:32px;font-weight:900;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">?</button>
             </div>
-            <div style="padding:1rem;">
-              <img id="imgPreviewSrc" src="" alt="" style="width:100%;display:block;border:3px solid #000;">
+            <div style="padding:1rem;overflow-y:auto;display:flex;justify-content:center;align-items:center;flex-grow:1;background:var(--neo-bg);">
+              <img id="imgPreviewSrc" src="" alt="" style="max-width:100%;max-height:70vh;width:auto;height:auto;display:block;border:3px solid #000;object-fit:contain;box-shadow:4px 4px 0 #000;">
             </div>
           </div>
         </div>
@@ -209,4 +209,5 @@ function confirmDelete(id, title) {
 </script>
 </body>
 </html>
+
 
